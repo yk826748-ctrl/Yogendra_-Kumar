@@ -1,0 +1,27 @@
+gudha_king — Firebase सेटअप (हिंदी)
+
+Package / Application ID: com.gudhaking.social
+
+1) Firebase Console खोलें: https://console.firebase.google.com/
+2) Add project चुनें और project name रखें: gudha-king
+3) Project Overview > Android icon > Register app.
+4) Android package name बिल्कुल यह डालें: com.gudhaking.social
+5) google-services.json डाउनलोड करें और इस प्रोजेक्ट के app/ फ़ोल्डर में रखें:
+   gudha_king/app/google-services.json
+6) Authentication > Sign-in method में Email/Password और Phone enable करें।
+7) Phone के लिए SMS region policy में अपने उपयोग के वैध क्षेत्र सेट करें।
+8) Project settings > Your apps में SHA-1 और SHA-256 fingerprints जोड़ें।
+   Android Studio के Gradle signingReport task से fingerprints मिलते हैं।
+9) Firestore Database बनाएँ; शुरुआत में Production mode चुनें।
+10) Firestore Rules में इस प्रोजेक्ट की firestore.rules फ़ाइल के नियम publish करें।
+11) Storage enable करें और storage.rules के नियम publish करें।
+12) Android Studio में प्रोजेक्ट खोलें, Gradle Sync करें, फिर Run करें।
+
+महत्वपूर्ण:
+- Phone OTP के लिए Firebase app verification, SHA fingerprints और Google Play services की जरूरत पड़ सकती है।
+- SMS OTP की लागत/सीमाएँ क्षेत्र और Firebase billing नियमों पर निर्भर करती हैं।
+- Firebase Storage के नए buckets/उपयोग के लिए billing plan की जरूरत पड़ सकती है। Firebase Console में मौजूदा शर्तें जाँचें।
+- Firebase rules को कभी भी खुला (allow read, write: if true) न रखें।
+- यह starter app email signup/login, phone OTP sign-in, user profile document, text/photo post upload और basic feed read का आधार देता है।
+- अभी production social app के लिए follow graph, comments, likes transactions, moderation, reporting, push notifications, pagination और account deletion अलग से जोड़ने होंगे।
+- यह APK नहीं है; Android Studio से build करना होगा। इस चैट के build environment में Android SDK उपलब्ध नहीं है।
